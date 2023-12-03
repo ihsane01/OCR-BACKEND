@@ -1,0 +1,17 @@
+import re
+
+# Votre texte extrait
+extracted_text = "Le Total: cH = 54.50 est à régler."
+
+# Expression régulière pour rechercher le modèle spécifique "Total: <autres caractères> = <montant>"
+total_amount_pattern = r'Total:\s*[\w\s]*=\s*(\d+\.\d+)'  # Pattern pour le modèle spécifique
+
+# Recherche de correspondances dans le texte extrait
+matches = re.search(total_amount_pattern, extracted_text)
+
+# Si une correspondance est trouvée, le montant est extrait
+if matches:
+    total_amount = matches.group(1)  # On récupère le montant capturé par les parenthèses dans le pattern
+    print("Montant total extrait :", total_amount)
+else:
+    print("Aucun montant total trouvé dans le texte extrait.")
